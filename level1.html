@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    #winModal h1 {
+      margin-bottom: 20px;
+    }
+
+    #winModal button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #winModal button:hover {
+      background-color: #0056b3;
+    }
+
+    #score {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      font-family: 'Arial', sans-serif;
+      color: rgb(235, 10, 201);
+      background: linear-gradient(to right, rgba(245, 245, 245, 0.8), rgba(255, 255, 255, 0.5));
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+      text-shadow: 1px 1px 2px black;
+      border: 1px solid rgba(235, 10, 201, 0.6);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    #scoreText {
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #ffcc00;
+      font-size: 36px;
+      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="score">Score: 0 </div>
+
+  <div id="winModal"
+    style="display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); color: white; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+    <h1>Congratulations! You've won the game!</h1>
+    <button onclick="resetGame()">Play Again</button>
+  </div>
+  <svg id="game" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" overflow="visible">
+
+
+    <g id="target">
+
+      <svg t="1714204275444" class="icon" viewBox="0 0 1079 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="9001" width="100" height="100" x="800" y="200">
+        <path
+          d="M14.28505 512.023808a497.691142 497.691142 0 0 0 995.191816 0 497.691142 497.691142 0 1 0-995.191816 0z"
+          fill="#6D9FD3" p-id="9002"></path>
+        <path
+          d="M511.976192 1024A511.928575 511.928575 0 0 1 0 512.023808 512.59521 512.59521 0 0 1 511.976192 0a512.023808 512.023808 0 0 1 0 1024zM512.023808 28.5701A484.072727 484.072727 0 0 0 28.5701 511.928575H14.28505h14.28505a483.406092 483.406092 0 0 0 483.358475 483.548942A483.501325 483.501325 0 0 0 512.023808 28.5701z"
+          fill="#252E5F" p-id="9003"></path>
+        <path
+          d="M511.976192 871.768984a359.792792 359.792792 0 1 1 359.745175-359.745176 360.078493 360.078493 0 0 1-359.745175 359.745176z"
+          fill="#FFFFFF" p-id="9004"></path>
+        <path
+          d="M511.976192 886.054034a374.077842 374.077842 0 1 1 374.030225-374.030226 374.458777 374.458777 0 0 1-374.030225 374.030226z m0-719.585585a345.555359 345.555359 0 1 0 345.507742 345.555359A345.936294 345.936294 0 0 0 511.976192 166.658917z"
+          fill="#252E5F" p-id="9005"></path>
+        <path
+          d="M511.976192 733.013532a221.03734 221.03734 0 1 1 220.989723-220.989724 221.132574 221.132574 0 0 1-220.989723 220.989724z"
+          fill="#FAD79E" p-id="9006"></path>
+        <path
+          d="M511.976192 747.250965a235.274773 235.274773 0 1 1 235.227156-235.227157 235.512857 235.512857 0 0 1-235.227156 235.227157z m0-441.979447a206.75229 206.75229 0 1 0 206.704673 206.75229 206.990374 206.990374 0 0 0-206.704673-206.75229z"
+          fill="#252E5F" p-id="9007"></path>
+        <path
+          d="M511.976192 595.210416A83.138991 83.138991 0 1 1 595.210416 512.023808 83.043757 83.043757 0 0 1 511.976192 595.210416z"
+          fill="#EE7D61" p-id="9008"></path>
+        <path
+          d="M511.976192 609.495466A97.376424 97.376424 0 1 1 609.495466 512.023808 97.471658 97.471658 0 0 1 511.976192 609.495466z m0-166.182748A68.853941 68.853941 0 1 0 580.925366 512.023808a68.901558 68.901558 0 0 0-68.949174-68.853941z"
+          fill="#252E5F" p-id="9009"></path>
+
+    </g>
+
+    <g id="bow" fill="none" stroke="#F39C12" stroke-linecap="round" vector-effect="non-scaling-stroke"
+      pointer-events="none">
+      <polyline points="88,200 88,250 88,300" />
+      <svg t="1714198571544" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="7482" width="200" height="200" x="" y="150">
+        <path
+          d="M682.666667 529.066667c-10.24 0-17.066667-6.826667-17.066667-17.066667 0-119.466667-109.226667-211.626667-187.733333-276.48-51.2-40.96-85.333333-68.266667-85.333334-98.986667 0-10.24 6.826667-17.066667 17.066667-17.066666s17.066667 6.826667 17.066667 17.066666c0 13.653333 40.96 44.373333 71.68 71.68 78.506667 68.266667 201.386667 167.253333 201.386666 303.786667 0 10.24-6.826667 17.066667-17.066666 17.066667z"
+          fill="#2D3545" p-id="7483"></path>
+        <path
+          d="M614.4 529.066667c-10.24 0-17.066667-6.826667-17.066667-17.066667 0-119.466667-81.92-211.626667-143.36-279.893333-37.546667-40.96-61.44-68.266667-61.44-95.573334 0-10.24 6.826667-17.066667 17.066667-17.066666s17.066667 6.826667 17.066667 17.066666c0 13.653333 27.306667 44.373333 54.613333 75.093334 61.44 68.266667 150.186667 167.253333 150.186667 300.373333 0 10.24-6.826667 17.066667-17.066667 17.066667z"
+          fill="#2D3545" p-id="7484"></path>
+        <path
+          d="M682.666667 529.066667c-10.24 0-17.066667-6.826667-17.066667-17.066667 0-119.466667-109.226667-211.626667-187.733333-276.48-51.2-40.96-85.333333-68.266667-85.333334-98.986667 0-10.24 6.826667-17.066667 17.066667-17.066666s17.066667 6.826667 17.066667 17.066666c0 13.653333 40.96 44.373333 71.68 71.68 78.506667 68.266667 201.386667 167.253333 201.386666 303.786667 0 10.24-6.826667 17.066667-17.066666 17.066667z"
+          fill="#2D3545" p-id="7485"></path>
+        <path
+          d="M409.6 904.533333c-10.24 0-17.066667-6.826667-17.066667-17.066666 0-27.306667 34.133333-58.026667 85.333334-98.986667 78.506667-64.853333 187.733333-157.013333 187.733333-276.48 0-10.24 6.826667-17.066667 17.066667-17.066667s17.066667 6.826667 17.066666 17.066667c0 136.533333-119.466667 235.52-201.386666 303.786667-30.72 27.306667-71.68 58.026667-71.68 71.68 0 10.24-6.826667 17.066667-17.066667 17.066666z"
+          fill="#2D3545" p-id="7486"></path>
+        <path
+          d="M409.6 904.533333c-10.24 0-17.066667-6.826667-17.066667-17.066666 0-40.96 34.133333-78.506667 75.093334-119.466667 58.026667-61.44 129.706667-136.533333 129.706666-256 0-10.24 6.826667-17.066667 17.066667-17.066667s17.066667 6.826667 17.066667 17.066667c0 133.12-81.92 218.453333-139.946667 279.893333-34.133333 37.546667-64.853333 68.266667-64.853333 95.573334 0 10.24-6.826667 17.066667-17.066667 17.066666z"
+          fill="#2D3545" p-id="7487"></path>
+
+      </svg>
+    </g>
+    <defs>
+      <g id="arrow">
+        <line x1="0" y1="0" x2="70" y2="0" fill="none" stroke="#555" stroke-width="2" />
+        <polygon fill="#555" points="74 0 66 4 64 0 66 -4" />
+        <polygon fill="" points="2 -3 -6 -4 -2 0 -6 4 2 3 6 0" />
+      </g>
+
+    </defs>
+    <linearGradient id="ArcGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3f87a6" stop-opacity="0.8"/>
+      <stop offset="20%" stop-color="#ebf8e1" stop-opacity="0.1"/> 
+      <stop offset="100%" stop-color="#f69d3c" stop-opacity="0.1"/>
+  </linearGradient>
+  <path id="arc" fill="none" stroke="url(#ArcGradient)" stroke-width="4" 
+  d="M100,150 q200,-200 400,0"
+  pointer-events="none" stroke-dasharray="5,2"/> 
+    <g class="arrow-angle">
+      <use x="90" y="251" xlink:href="#arrow" />
+    </g>
+    <g class="arrows" clip-path="" pointer-events="none">
+    </g>
+    <g id="obstacles">
+      <rect id="obstacle" x="600" y="150" width="40" height="40" fill="red" />
+    </g>
+    <text id="scoreText" x="900" y="200" fill="#ffcc00" font-size="24" opacity="0">+0</text>
+  </svg>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js"></script>
+  <script src="level1.js"></script>
+
+</body>
+<script>
+  var backgroundMusic = new Audio('background.wav');
+  backgroundMusic.loop = true;
+  backgroundMusic.volume = 0.5;
+  function playBackgroundMusic() {
+    backgroundMusic.play().catch(function (e) {
+      console.error("fail", e);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    playBackgroundMusic();
+  });
+  window.addEventListener('unload', function () {
+    backgroundMusic.pause();
+  });
+</script>
+
+</html>

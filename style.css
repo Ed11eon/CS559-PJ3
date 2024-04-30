@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap'); /* Comic style font */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Bangers', cursive;
+  background-color: #f4f4f4;
+  background-image: url('https://source.unsplash.com/random/1920x1080?Comics');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.game-title {
+  text-align: center;
+  font-size: 48px;
+  margin-top: 50px;
+}
+.color-two {
+  color: #FF5733; 
+}
+
+.color-three {
+  color: #33C4FF; 
+}
+.color-four{
+  color: #650086; 
+}
+
+.color-one {
+  color: #ddff00; 
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 20px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid #555555;
+}
+
+button:hover {
+  background-color: #555555;
+  color: white;
+}
+.loading-circle {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #ccc;
+  border-top-color: #007bff;
+  transform: translate(-50%, -50%);
+  animation: spin 2s linear infinite;
+}
+.game-subtitle {
+  color: #000000; /* Light gray color, change as needed */
+  font-size: 0.5em; /* Medium font size, adjust according to your design */
+  text-align: center; /* Center-align text */
+  padding: 10px 0; /* Spacing above and below the text */
+}
+
+@keyframes spin {
+  100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

@@ -1,0 +1,17 @@
+Name: Zhihao Yang
+Github ID: Ed11eon
+Wisc id: zyang738
+Basic point:
+1. [X] The game has a unified art style(1 pt): The whole game is in American comic style
+2. [X] The arrow moves in parabola(1pt):
+3. [X] The arrow has gravity applied to it(1pt):
+4. [X] Sound effect when hitting the target in different locations(1pt): When an arrow hits the target, the bullseye and obstacles have corresponding sound effects, and when the bow is drawn, there are also sound effects.
+5. [X] Display points gotten from hit(1pt): The game will be won if the target score is reached. The score is displayed in the upper right corner.
+6. [X] Different points awarded for hitting different rings of target(1pt):Hitting the bullseye and target will get three points and one point respectively.
+7. [X] Different game difficulties(2pt): The game has two levels. In the second level, the target will move, the obstacles will move faster, and it will be more difficult for players to score.
+Advanced point:
+1. [X] When hitting the target, the point player got float up from the target where was hit(1pt):  When hitting the target, +1 and +3 will be floated up from the target depending on the position.
+2. [X] Add a short line to show where the arrow is going to(1pt):There is a dotted line that guides the direction of the arrow.
+3. [] Power ups(1pt):
+
+totall 10/11
