@@ -15,3 +15,6 @@ Advanced point:
 3. [] Power ups(1pt):
 
 totall 10/11
+
+Description: I designed an American comic-style bow and arrow shooting game with two levels. Run index.html to enter the main menu interface. Then select a level to enter the game. Drag the bow with the mouse to shoot, avoid obstacles, and hit the target to score points. , the game is won when the target score is reached.
+
