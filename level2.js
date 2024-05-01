@@ -10,10 +10,7 @@ var rotationCenter = {
   x: 100,
   y: 250,
 };
-aimTarget({
-  x: 320,
-  y: 300,
-});
+
 
 function checkWinCondition() {
   console.log("checkWinCondition called, current score: " + score);
@@ -55,13 +52,17 @@ function firstClick(e) {
     x: -1,
   });
   setupEventListeners();
-  aimTarget(e);
+  firstAim(e);
 }
 function playSound(filename) {
   var audio = new Audio(filename);
   audio.play();
 }
-function aimTarget(e) {
+firstAim({
+  x: 320,
+  y: 300,
+});
+function firstAim(e) {
   const mousePosition = calculateMousePosition(e);
   const { adjustedBowAngle, pullDistance } = calculateBowAdjustments(mousePosition);
   const animationConfigs = prepareAnimationConfigs(adjustedBowAngle, pullDistance);
@@ -128,7 +129,7 @@ function moveObstacle() {
   });
 }
 function shoot() {
-  window.removeEventListener("mousemove", aimTarget);
+  window.removeEventListener("mousemove", firstAim);
   window.removeEventListener("mouseup", shoot);
   resetBowAnimation();
   var newArrow = duplicateArrow("#arrow", myArrows);
@@ -225,7 +226,7 @@ function panHit(tween) {
 }
 
 function setupEventListeners() {
-  window.addEventListener("mousemove", aimTarget);
+  window.addEventListener("mousemove", firstAim);
   window.addEventListener("mouseup", shoot);
 }
 

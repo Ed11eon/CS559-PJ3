@@ -9,10 +9,7 @@ var rotationCenter = {//bow rotation center
   x: 105,
   y: 250,
 };
-aimTarget({
-  x: 320,
-  y: 300,
-});
+
 function checkWinCondition() {
   console.log("checkWinCondition called, current score: " + score);
   if (score >= 15) {
@@ -52,13 +49,17 @@ function animateElement(selector, duration, properties) {
 function firstClick(e) {
   TweenMax.to(".arrow-angle use", 0.7, {opacity: 1,x: -1,});
   setupEventListeners();
-  aimTarget(e);
+  firstAim(e);
 }
 function playSound(filename) {
   var audio = new Audio(filename);
   audio.play();
 }
-function aimTarget(e) {
+firstAim({
+  x: 320,
+  y: 300,
+});
+function firstAim(e) {
   const mousePosition = calculateMousePosition(e);
   const { adjustedBowAngle, pullDistance } = calculateBowAdjustments(mousePosition);
   const animationConfigs = prepareAnimationConfigs(adjustedBowAngle, pullDistance);
@@ -121,7 +122,7 @@ function animateBowString(adjustedBowAngle, pullDistance) {
 
 //For uper part about the framework of the aiming and loose code, I have reference to the code on the Internet: https://github.com/kunjgit/GameZone/blob/d465444c8cd080ad85cca46abf302410dd428c81/Games/Bulls_eye/app.js#L69. I mainly refer to his mathematical processing methods, and the choice of some parameter
 function setupEventListeners() {
-  window.addEventListener("mousemove", aimTarget);
+  window.addEventListener("mousemove", firstAim);
   window.addEventListener("mouseup", shoot);
 }
 function moveObstacle() {
@@ -133,7 +134,7 @@ function moveObstacle() {
   });
 }
 function shoot() {
-  window.removeEventListener("mousemove", aimTarget);
+  window.removeEventListener("mousemove", firstAim);
   window.removeEventListener("mouseup", shoot);
   resetBowAnimation();
   var newArrow = duplicateArrow("#arrow", myArrows);
