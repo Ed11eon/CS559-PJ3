@@ -1,6 +1,7 @@
 Name: Zhihao Yang
 Github ID: Ed11eon
 Wisc id: zyang738
+link to github repository: https://github.com/Ed11eon/CS559-PJ3
 Basic point:
 1. [X] The game has a unified art style(1 pt): The whole game is in American comic style
 2. [X] The arrow moves in parabola(1pt):
